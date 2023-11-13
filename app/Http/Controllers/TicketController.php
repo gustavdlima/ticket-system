@@ -13,7 +13,12 @@ class TicketController extends Controller
      */
     public function index()
     {
-        return inertia('Ticket/Index');
+        return inertia(
+            'Ticket/Index',
+            [
+                'tickets' => Ticket::all()
+            ]
+        );
     }
 
     /**
@@ -37,9 +42,12 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-        return inertia('Ticket/Show', [
-            'ticket' => $ticket
-        ]);
+        return inertia(
+            'Ticket/Show',
+            [
+                'tickets' => $ticket
+            ]
+        );
     }
     /**
      * Show the form for editing the specified resource.

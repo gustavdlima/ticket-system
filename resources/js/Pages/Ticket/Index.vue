@@ -1,16 +1,13 @@
 <template>
-  <Layout>
-    <Head title="Welcome" />
-    <h1>Welcome {{ tickets }} </h1>
-  </Layout>
+  <h1>Index</h1>
+      <div v-for="ticket in tickets" :key="ticket.id">
+        {{ ticket.setor }}
+      </div>
 </template>
 
 <script setup>
-import { Head } from '@inertiajs/vue3'
-
 defineProps({
-  tickets: Array
+  tickets: Array,
 })
 
 </script>
-
