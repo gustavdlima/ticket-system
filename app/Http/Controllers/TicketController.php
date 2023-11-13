@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Ticket;
+use Inertia\Inertia;
 
 class TicketController extends Controller
 {
@@ -11,7 +13,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-        return "Index";
+        return inertia('Ticket/Index');
     }
 
     /**
@@ -33,11 +35,12 @@ class TicketController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Ticket $ticket)
     {
-        return "Show";
+        return inertia('Ticket/Show', [
+            'ticket' => $ticket
+        ]);
     }
-
     /**
      * Show the form for editing the specified resource.
      */
