@@ -1,13 +1,14 @@
 <template>
-	<h1>Show</h1>
-	  <div v-for="ticket in tickets" :key="ticket.id">
-        {{ ticket.setor }}
-      </div>
-  </template>
+	<div >
+		<ListTicket :ticket="tickets" />
+	</div>
+</template>
 
-  <script setup>
-	defineProps({
-		tickets: Array,
-	})
-  </script>
+<script setup>
+import ListTicket from '@/Pages/Components/ListTicket.vue'
+
+defineProps({
+	tickets: Object,
+})
+</script>
 
