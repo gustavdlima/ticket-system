@@ -14,4 +14,4 @@ use App\Http\Controllers\TicketController;
 |
 */
 
-Route::resource('ticket', TicketController::class)->only(['index', 'show']);
+Route::resource('ticket', TicketController::class)->only(['index', 'show', 'create', 'store']);

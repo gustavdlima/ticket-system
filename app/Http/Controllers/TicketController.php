@@ -26,7 +26,9 @@ class TicketController extends Controller
      */
     public function create()
     {
-        //
+        return inertia(
+            'Ticket/Create'
+        );
     }
 
     /**
@@ -34,7 +36,10 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Ticket::create($request->all());
+
+        return redirect()->route('ticket.index')
+            ->with('success', 'O chamado foi realizado com sucesso! Agora é só esperar :)');
     }
 
     /**

@@ -1,5 +1,5 @@
 <template>
-	<div >
+	<div>
 		<ListTicket :ticket="tickets" />
 	</div>
 </template>
