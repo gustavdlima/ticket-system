@@ -42,6 +42,15 @@ class TicketController extends Controller
             ->with('success', 'O chamado foi realizado com sucesso! Agora é só esperar :)');
     }
 
+
+    public function list(Request $request) {
+        return inertia(
+            'Ticket/Listar',
+            [
+                'tickets' => Ticket::all()
+            ]
+        );
+    }
     /**
      * Display the specified resource.
      */

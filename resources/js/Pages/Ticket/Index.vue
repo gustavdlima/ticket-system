@@ -1,12 +1,7 @@
 <template>
   <h1>Inicio</h1>
-  <Link :href="'/ticket/create'">Criar ticket</Link>2
-  <div v-for="ticket in tickets" :key="ticket.id">
-    <Link :href="`/ticket/${ticket.id}`">
-      <ListTicket :ticket="ticket" />
-    </Link>
-    <!-- <button @click="ticket.status = 'false'">Close</button> -->
-  </div>
+  <Link :href="'/ticket/create'">Criar ticket</Link><br>
+  <Link :href="'/ticket/create'">Listar ticket</Link><br>
 </template>
 
 <script setup>
@@ -15,7 +10,5 @@ import ListTicket from '@/Pages/Components/ListTicket.vue'
 defineProps({
   tickets: Array,
 })
-
-
 
 </script>
