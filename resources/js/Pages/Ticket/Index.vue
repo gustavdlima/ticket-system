@@ -1,7 +1,7 @@
 <template>
   <h1>Inicio</h1>
   <Link :href="'/ticket/create'">Criar ticket</Link><br>
-  <Link :href="'/ticket/create'">Listar ticket</Link><br>
+  <Link :href="'/ticket/listar'">Listar ticket</Link><br>
 </template>
 
 <script setup>

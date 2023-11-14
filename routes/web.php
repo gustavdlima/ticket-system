@@ -15,4 +15,4 @@ use App\Http\Controllers\TicketController;
 */
 
 Route::get('ticket/listar', [TicketController::class, 'list']);
-Route::resource('ticket', TicketController::class)->only(['index', 'show', 'create', 'store']);
+Route::resource('ticket', TicketController::class)->only(['index', 'show', 'create', 'store', 'edit', 'update', 'destroy']);
