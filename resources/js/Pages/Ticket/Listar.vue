@@ -5,7 +5,7 @@
 			ticket.defeito }}
 	</div> -->
 	<ag-grid-vue style="width: 800px; height: 720px" class="ag-theme-alpine-dark" :columnDefs="columnDefs"
-		:rowData="tickets" :animateRows="true" @cell-clicked="changeTicketStatus" @grid-ready="onGridReady"
+		:rowData="tickets" :animateRows="true" @cell-clicked="onRowDataCloseTicket" @grid-ready="onGridReady"
 		rowSelection="single">
 	</ag-grid-vue>
 </template>
@@ -13,7 +13,6 @@
 <script>
 import { AgGridVue } from 'ag-grid-vue3'
 import { ref } from 'vue'
-import axios from 'axios'
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import CloseTicket from '@/Pages/Components/CloseTicket.vue'
@@ -36,11 +35,24 @@ export default {
 		}
 	},
 	setup() {
-
 		const gridApi = ref(null);
+		const rowData = ref(null);
+		// const getRowId = ref(null);
+		// const rowSelection = ref(null);
+
+		const onRowDataCloseTicket = (event) => {
+			const rowNode = gridApi.value.getRowNode(event.rowIndex);
+			const ticket = event.data;
+			ticket.status = true;
+			rowNode.setData(ticket);
+		}
+
 		const onGridReady = params => {
 			gridApi.value = params.api;
+			// getRowId = params.data.id;
 		};
+
+
 
 
 		return {
@@ -53,7 +65,7 @@ export default {
 			],
 			onGridReady,
 			CloseTicket,
-
+			onRowDataCloseTicket
 		};
 	}
 }
