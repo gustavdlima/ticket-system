@@ -5,7 +5,11 @@
 			ticket.defeito }}
 	</div> -->
 	<ag-grid-vue style="width: 800px; height: 720px" class="ag-theme-alpine-dark" :columnDefs="columnDefs"
-		:rowData="tickets" :animateRows="true" @cell-clicked="onRowDataCloseTicket" @grid-ready="onGridReady"
+		:rowData="tickets" :animateRows="true"
+		@cell-clicked="openTicket"
+		@cell-double-clicked="onRowDataCloseTicket"
+		@grid-ready="onGridReady"
+
 		rowSelection="single">
 	</ag-grid-vue>
 </template>
@@ -16,6 +20,7 @@ import { ref } from 'vue'
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import CloseTicket from '@/Pages/Components/CloseTicket.vue'
+import { router } from '@inertiajs/vue3'
 
 export default {
 	name: 'Index',
@@ -26,13 +31,6 @@ export default {
 		tickets: Array,
 	},
 	methods: {
-		async changeTicketStatus(event) {
-			// console.log(event.data);
-			let status = event.data.status;
-			console.log(status);
-			status = false;
-			console.log(status);
-		}
 	},
 	setup() {
 		const gridApi = ref(null);
@@ -47,13 +45,15 @@ export default {
 			rowNode.setData(ticket);
 		}
 
+		const openTicket = (event) => {
+			const ticketId = event.data.id;
+			router.get("/ticket/" + ticketId, event.data);
+		}
+
 		const onGridReady = params => {
 			gridApi.value = params.api;
 			// getRowId = params.data.id;
 		};
-
-
-
 
 		return {
 			columnDefs: [
@@ -65,7 +65,8 @@ export default {
 			],
 			onGridReady,
 			CloseTicket,
-			onRowDataCloseTicket
+			onRowDataCloseTicket,
+			openTicket
 		};
 	}
 }

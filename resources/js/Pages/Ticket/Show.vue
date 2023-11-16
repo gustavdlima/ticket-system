@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<h1>Chamado</h1>
 		<ListTicket :ticket="tickets" />
 	</div>
 </template>
