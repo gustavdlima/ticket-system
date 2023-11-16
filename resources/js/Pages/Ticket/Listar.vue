@@ -6,10 +6,8 @@
 	</div> -->
 	<ag-grid-vue style="width: 800px; height: 720px" class="ag-theme-alpine-dark" :columnDefs="columnDefs"
 		:rowData="tickets" :animateRows="true"
-		@cell-clicked="openTicket"
 		@cell-double-clicked="onRowDataCloseTicket"
 		@grid-ready="onGridReady"
-
 		rowSelection="single">
 	</ag-grid-vue>
 </template>
@@ -45,10 +43,10 @@ export default {
 			rowNode.setData(ticket);
 		}
 
-		const openTicket = (event) => {
-			const ticketId = event.data.id;
-			router.get("/ticket/" + ticketId, event.data);
-		}
+		// const onCellClickOpenTicket = (event) => {
+		// 	const ticketId = event.data.id;
+		// 	router.get("/ticket/" + ticketId, event.data);
+		// }
 
 		const onGridReady = params => {
 			gridApi.value = params.api;
@@ -57,16 +55,16 @@ export default {
 
 		return {
 			columnDefs: [
-				{ field: 'status', sortable: true, filter: true, width: 100 },
-				{ field: 'setor', sortable: true, filter: true },
-				{ field: 'nome', sortable: true, filter: true },
-				{ field: 'defeito', sortable: true, filter: true},
+				{ field: 'status', sortable: true, filter: true, width: 37 },
+				{ field: 'setor', sortable: true, filter: true, width: 150 },
+				{ field: 'nome', sortable: true, filter: true, width: 200 },
+				{ field: 'defeito', sortable: true, filter: true, width: 300},
 				{ field: '', sortable: true, filter: true, cellRenderer: CloseTicket },
 			],
 			onGridReady,
 			CloseTicket,
+			// onCellClickOpenTicket,
 			onRowDataCloseTicket,
-			openTicket
 		};
 	}
 }

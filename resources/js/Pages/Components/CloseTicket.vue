@@ -1,8 +1,6 @@
 <template>
 	<div>
-		<button @click="alertClick">Fechar Chamado</button>
-
-
+		<button href="/ticket + ticket.id">Abrir</button>
 	</div>
 </template>
 
@@ -10,14 +8,9 @@
 export default {
 	setup(props) {
 		let ticket = props.params;
-		function alertClick() {
-			let status = false;
-			ticket.data.status = status;
-			console.log(ticket.data.status);
-		}
+
 		return {
 			ticket,
-			alertClick
 		}
 	}
 }
