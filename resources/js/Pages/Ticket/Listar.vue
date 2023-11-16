@@ -6,7 +6,6 @@
 	</div> -->
 	<ag-grid-vue style="width: 800px; height: 720px" class="ag-theme-alpine-dark" :columnDefs="columnDefs"
 		:rowData="tickets" :animateRows="true"
-		@cell-double-clicked="onRowDataCloseTicket"
 		@grid-ready="onGridReady"
 		rowSelection="single">
 	</ag-grid-vue>
@@ -33,6 +32,7 @@ export default {
 	setup() {
 		const gridApi = ref(null);
 		const rowData = ref(null);
+		let setClickFlag = null;
 		// const getRowId = ref(null);
 		// const rowSelection = ref(null);
 
@@ -43,10 +43,11 @@ export default {
 			rowNode.setData(ticket);
 		}
 
-		// const onCellClickOpenTicket = (event) => {
-		// 	const ticketId = event.data.id;
-		// 	router.get("/ticket/" + ticketId, event.data);
-		// }
+
+		const onCellClickOpenTicket = (event) => {
+			const ticketId = event.data.id;
+			router.get("/ticket/" + ticketId, event.data);
+		}
 
 		const onGridReady = params => {
 			gridApi.value = params.api;
@@ -64,7 +65,8 @@ export default {
 			onGridReady,
 			CloseTicket,
 			// onCellClickOpenTicket,
-			onRowDataCloseTicket,
+			// onRowDataCloseTicket,
+
 		};
 	}
 }

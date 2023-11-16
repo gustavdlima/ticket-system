@@ -7,6 +7,7 @@
 <script setup>
 import { Link } from '@inertiajs/vue3'
 import ListTicket from '@/Pages/Components/ListTicket.vue'
+
 defineProps({
   tickets: Array,
 })

@@ -17,7 +17,9 @@
         "ag-grid-community": "^30.2.1",
         "ag-grid-vue3": "^30.2.1",
         "npm": "^10.2.3",
+        "sweetalert2": "^11.10.0",
         "vue-good-table": "^2.21.11",
-        "vue-router": "^4.2.5"
+        "vue-router": "^4.2.5",
+        "vue-sweetalert2": "^5.0.5"
     }
 }
