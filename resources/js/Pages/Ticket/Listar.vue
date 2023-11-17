@@ -5,9 +5,7 @@
 			ticket.defeito }}
 	</div> -->
 	<ag-grid-vue style="width: 800px; height: 720px" class="ag-theme-alpine-dark" :columnDefs="columnDefs"
-		:rowData="tickets" :animateRows="true"
-		@grid-ready="onGridReady"
-		rowSelection="single">
+		:rowData="tickets" :animateRows="true" @grid-ready="onGridReady" rowSelection="single">
 	</ag-grid-vue>
 </template>
 
@@ -16,7 +14,7 @@ import { AgGridVue } from 'ag-grid-vue3'
 import { ref } from 'vue'
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
-import CloseTicket from '@/Pages/Components/CloseTicket.vue'
+import OpenTicket from '@/Pages/Components/OpenTicket.vue'
 import { router } from '@inertiajs/vue3'
 
 export default {
@@ -36,7 +34,7 @@ export default {
 		// const getRowId = ref(null);
 		// const rowSelection = ref(null);
 
-		const onRowDataCloseTicket = (event) => {
+		const onRowDataOpenTicket = (event) => {
 			const rowNode = gridApi.value.getRowNode(event.rowIndex);
 			const ticket = event.data;
 			ticket.status = true;
@@ -59,13 +57,12 @@ export default {
 				{ field: 'status', sortable: true, filter: true, width: 37 },
 				{ field: 'setor', sortable: true, filter: true, width: 150 },
 				{ field: 'nome', sortable: true, filter: true, width: 200 },
-				{ field: 'defeito', sortable: true, filter: true, width: 300},
-				{ field: '', sortable: true, filter: true, cellRenderer: CloseTicket },
+				{ field: 'defeito', sortable: true, filter: true, width: 300 },
+				{ field: '', sortable: true, filter: true, cellRenderer: OpenTicket },
 			],
 			onGridReady,
-			CloseTicket,
+			OpenTicket,
 			// onCellClickOpenTicket,
-			// onRowDataCloseTicket,
 
 		};
 	}

@@ -18,12 +18,18 @@ export default {
 			const ticketId = ticket.id;
 			swal.fire({
 				title: "Chamado #" + ticketId,
-				icon: "warning",
-				showCancelButton: true,
-				confirmButtonColor: "#3085d6",
-				cancelButtonColor: "#d33",
-				confirmButtonText: "Sim",
-				cancelButtonText: "Cancelar",
+				html: `
+					<div>
+						<p>
+							Setor: <b>${ticket.setor}</b> <br>
+							Nome: ${ticket.nome} <br>
+							Equipamento: ${ticket.equipamento} <br>
+							N° Tombamento: ${ticket.n_tombamento} <br>
+						</p>
+						<p>Defeito: <b>${ticket.defeito}</b></p>
+					</div>
+				`,
+				position: 'center',
 			});
 		}
 
